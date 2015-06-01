@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>This is event list
+	<div id = "eventList">
+	</div>
+</body>
+<script type="text/javascript">
+	var poll = function() {
+		setTimeout(function() {
+			$.ajax({
+				url : "http://localhost:8080/spring.longpooling/events",
+				success : function(data) {
+					var eL = $("#eventList");
+					eL.html(JSON.stringify(data));
+				},
+				dataType : "json",
+				complete : poll
+			});
+		}, 3000);
+	};
+	
+	poll();
+</script>
+</html>

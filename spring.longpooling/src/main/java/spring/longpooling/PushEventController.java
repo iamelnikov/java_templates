@@ -12,17 +12,29 @@ import org.springframework.web.context.request.async.DeferredResult;
 @Controller
 public class PushEventController {
 
-	private static final Long defResultTimeout = 50000L;
-	
+	private static final Long defResultTimeout = 25000L;
+
 	@Autowired
 	private PushEventService pushEventService;
-	
-	@RequestMapping(value = "/events", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/events_generator_start", method = RequestMethod.GET)
 	@ResponseBody
-	public DeferredResult<Set<PushEvent>> getPushEventSet(){
-		DeferredResult<Set<PushEvent>> result = new DeferredResult<Set<PushEvent>>(defResultTimeout);
-		result.setResult(pushEventService.eventSet);
-		return result;
+	public String startEventGenerator() {
+		this.pushEventService.start();
+		return "OK";
 	}
 	
+	@RequestMapping(value = "/eventList", method = RequestMethod.GET)
+	public String eventList(){
+		return "events";
+	}
+
+	@RequestMapping(value = "/events", method = RequestMethod.GET)
+	@ResponseBody
+	public DeferredResult<Set<PushEvent>> getPushEventSet() {
+		DeferredResult<Set<PushEvent>> result = new DeferredResult<Set<PushEvent>>(defResultTimeout);
+		this.pushEventService.subscribe(result);
+		return result;
+	}
+
 }
