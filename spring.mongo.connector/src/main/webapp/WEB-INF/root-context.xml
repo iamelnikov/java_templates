@@ -22,7 +22,6 @@
 		<constructor-arg ref="mongoDbFactory" />
 		<constructor-arg ref="converter" />
 	</bean>
-	
 	<!-- Context Configuration  -->
 	<context:component-scan base-package="spring.mongo.connector" />
 	<context:annotation-config />

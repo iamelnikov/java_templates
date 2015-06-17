@@ -27,6 +27,26 @@ app.controller("addNewCompanyController", [ '$scope', '$http', function($scope, 
 
 } ]);
 
+app.controller("fileUploader", [ '$scope', '$http', function($scope, $http) {
+	$scope.uploadFile = function(wrapper) {
+		var req = {
+			method : 'POST',
+			url : '/spring.mongo/v1/uploadFile',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			data : wrapper
+		}
+
+		/*if ((company != null) && (company !== 'undefined')) {
+			$http(req).success(function(data, status) {
+				$scope.result = {status : status, data: data};
+			}).error(function() {
+				$scope.result = { status: 'Error'};
+				});
+		}*/
+	}
+} ]);
 /*
  * app.directive('location', function(){ return { restrict: 'E', templateUrl:
  * 'directive/location.html', controller: function(){ } , controllerAs:
