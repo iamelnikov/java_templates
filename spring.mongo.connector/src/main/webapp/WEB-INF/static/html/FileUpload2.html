@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add New Company Information</title>
+</head>
+<body ng-app="spring.mongo.connector">
+	<div>
+		<!-- Title -->
+		<div>
+			<span>Upload Some File</span>
+		</div>
+		<!-- Body -->
+		<div>
+			<form enctype="multipart/form-data" method="post"
+				action="/spring.mongo.connector/spring.mongo/v1/uploadFile2">
+				<div>
+					<label for="fileName" title="FileName"></label> <input type="text"
+						name="fileName" id="fileName">
+				</div>
+				<div>
+					<label for="userName" title="UserName"></label> <input type="text"
+						name="userName" id="userName">
+				</div>
+				<div>
+					<label for="userName" title="UserName"></label> <input type="file"
+						accept="*/*" name="file">
+				</div>
+				<input type="submit" class="button"></input>
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>
