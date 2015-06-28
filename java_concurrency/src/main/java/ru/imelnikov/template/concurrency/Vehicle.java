@@ -4,15 +4,17 @@ import java.util.concurrent.Semaphore;
 
 public abstract class Vehicle implements Runnable {
 	
-	protected final int maxAvaliablePlacesCount;
+	protected final int maxAvailablePlacesCount;
+	protected VEHICLE_CONDITION condition;
 	protected Semaphore semaphore;
 	
-	public Vehicle(int maxAvaliablePlacesCount){
-		this.maxAvaliablePlacesCount = maxAvaliablePlacesCount;
-		this.semaphore = new Semaphore(maxAvaliablePlacesCount, WorldSettings.INSTANCE.isManInTheWorldBecomeCrazy());
+	public Vehicle(int maxAvailablePlacesCount, VEHICLE_CONDITION condition){
+		this.maxAvailablePlacesCount = maxAvailablePlacesCount;
+		this.condition = condition;
+		this.semaphore = new Semaphore(maxAvailablePlacesCount, WorldSettings.INSTANCE.isManInTheWorldBecomeCrazy());
 	}
 	
-	public int getCurrentlyAvaliablePlacesCount(){
+	public int getCurrentlyAvailablePlacesCount(){
 		return this.semaphore.availablePermits();
 	}
 	
@@ -22,5 +24,17 @@ public abstract class Vehicle implements Runnable {
 	
 	public Boolean putManyPassenger(int passengerCount){
 		return this.semaphore.tryAcquire(passengerCount);
+	}
+	
+	public VEHICLE_CONDITION getCondition() {
+		return condition;
+	}
+
+	public void setCondition(VEHICLE_CONDITION condition) {
+		this.condition = condition;
+	}
+
+	static enum VEHICLE_CONDITION{
+		NEW, EXCELLENT, VERY_GOOD,GOOD, AVERAGE, BELOW_AVERAGE, BROKEN 
 	}
 }
