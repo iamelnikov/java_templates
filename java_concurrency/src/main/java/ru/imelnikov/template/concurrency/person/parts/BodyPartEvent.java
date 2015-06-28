@@ -1,6 +1,8 @@
 package ru.imelnikov.template.concurrency.person.parts;
 
-public abstract class BodyPartEvent implements Comparable<Integer> {
+import ru.imelnikov.template.concurrency.PersonActivityEvent;
+
+public abstract class BodyPartEvent<T extends PersonActivityEvent> implements Comparable<Integer> {
 
 	protected final static int DEFAULT_PRIORITY = 5;
 	
