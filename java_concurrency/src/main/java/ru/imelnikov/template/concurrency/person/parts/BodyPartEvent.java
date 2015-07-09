@@ -1,8 +1,10 @@
 package ru.imelnikov.template.concurrency.person.parts;
 
-import ru.imelnikov.template.concurrency.PersonActivityEvent;
+import ru.imelnikov.template.concurrency.Event;
 
-public abstract class BodyPartEvent<T extends PersonActivityEvent> implements Comparable<Integer> {
+public abstract class BodyPartEvent implements Event, Comparable<Integer> {
+
+	private static final long serialVersionUID = -5064820825529917573L;
 
 	protected final static int DEFAULT_PRIORITY = 5;
 	

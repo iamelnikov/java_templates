@@ -10,7 +10,12 @@ import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 
-import ru.imelnikov.template.concurrency.Vehicle.VEHICLE_CONDITION;
+import ru.imelnikov.template.concurrency.infrastructure.BusDepot;
+import ru.imelnikov.template.concurrency.infrastructure.BusStation;
+import ru.imelnikov.template.concurrency.infrastructure.PlaceFactory;
+import ru.imelnikov.template.concurrency.vehicle.SmallBus;
+import ru.imelnikov.template.concurrency.vehicle.VehicleFactory;
+import ru.imelnikov.template.concurrency.vehicle.Vehicle.VEHICLE_CONDITION;
 
 public class CityFactory {
 	public static CityFactory INSTANCE = new CityFactory();

@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 
+import ru.imelnikov.template.concurrency.infrastructure.BusDepot;
+import ru.imelnikov.template.concurrency.infrastructure.BusStation;
+import ru.imelnikov.template.concurrency.infrastructure.Place;
+
 public class City {
 
 	private static Logger LOG = Logger.getLogger(City.class);

@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-import ru.imelnikov.template.concurrency.Person;
+import ru.imelnikov.template.concurrency.person.Person;
 import ru.imelnikov.template.concurrency.person.parts.Stomach.METABOLISM;
 
 public class PersonDigestiveSystem implements BodyPart {

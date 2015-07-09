@@ -1,17 +1,47 @@
 package ru.imelnikov.template.concurrency.person.parts;
 
-import ru.imelnikov.template.concurrency.Person;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
-public class Bladder extends Volumed{
+import ru.imelnikov.template.concurrency.person.parts.Stomach.ToBladderEvent;
+
+
+public class Bladder extends VolumedBodyPart{
 
 	private static final long serialVersionUID = 401826315672803080L;
 
-	public Bladder(Person person, double volume, double health) {
-		super(person, volume, health);
+	
+	public Bladder(NervousSystem nervousSystem, double volume, double health) {
+		super(nervousSystem, volume, health);
 	}
 
 	@Override
 	public void run() {
-		
+		while (true){
+			if (this.loaded > 0) {
+				
+			}
+		}
 	}
+	
+	@Override
+	public void load(double addedVolume) {
+		this.loaded +=addedVolume;
+	}
+	
+	private static class FromStomachToBladderHandler implements EventHandler<ToBladderEvent, Void> {
+		@Override
+		public void processEvent(ToBladderEvent event) {
+			
+		}
+
+		@Override
+		public void run() {
+			
+		}
+	}
+
+
+
+	
 }
